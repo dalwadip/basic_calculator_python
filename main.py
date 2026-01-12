@@ -12,22 +12,24 @@ while True:
 
     user_num2 = int(input("Put in your second number: "))
 
-    if user_op == "+":
-        result = user_num1 + user_num2
-    elif user_op == "-":
-        result = user_num1 - user_num2
-    elif user_op == "*":
-        result = user_num1 * user_num2
-    elif user_op == "/":
-        result = user_num1 / user_num2
-    elif user_op == "//":
-        result = user_num1 // user_num2
-    elif user_op == "%":
-        result = user_num1 % user_num2
-    else:
-        print("Invalid operation")
-        continue #skips this iteration and goes back to top of while loop
-    print("Result:", result)
+#use switch statement in python instead of if statements when using one variable in this case: user_op
+    match user_op:
+        case "+":
+            result = user_num1 + user_num2
+        case "-":
+            result = user_num1 - user_num2
+        case "*":
+            result = user_num1 * user_num2
+        case "/":
+            result = user_num1 / user_num2
+        case "//":
+            result = user_num1 + user_num2
+        case "%":
+            result = user_num1 + user_num2
+        case unknown_command:
+            print(f"Invalid operation: {unknown_command}")
+            continue
+    print(f"Result: {result}")
 
 print("Thanks for using this calculator!")
 
