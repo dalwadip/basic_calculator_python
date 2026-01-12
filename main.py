@@ -1,23 +1,36 @@
-def add(num1, num2):
-    return num1 + num2
-print(add(15, 90))
+# user puts whatever they want to calculate
+# should print it out
+# keep going until it says exit
 
-def subtract(num1, num2):
-    return num1 - num2
-print(subtract(95, 23))
+while True:
+    user_op = input("Put in your operation (+,-,*,/,% or exit): ")
+    if user_op == "exit":
+        print("Bye!")
+        break
 
-def multiply(num1, num2):
-    return num1 * num2
-print(multiply(20, 20))
+    user_num1 = int(input("Put in your first number: "))
 
-def double_division(num1, num2):
-    return num1 / num2
-print(double_division(45, 15))
+    user_num2 = int(input("Put in your second number: "))
 
-def int_division(num1, num2):
-    return num1 // num2
-print(int_division(45, 15))
+    if user_op == "+":
+        result = user_num1 + user_num2
+    elif user_op == "-":
+        result = user_num1 - user_num2
+    elif user_op == "*":
+        result = user_num1 * user_num2
+    elif user_op == "/":
+        result = user_num1 / user_num2
+    elif user_op == "//":
+        result = user_num1 // user_num2
+    elif user_op == "%":
+        result = user_num1 % user_num2
+    else:
+        print("Invalid operation")
+        continue #skips this iteration and goes back to top of while loop
+    print("Result:", result)
 
-def remainder(num1, num2):
-    return num1 % num2
-print(remainder(90, 11))
+print("Thanks for using this calculator!")
+
+
+
+
