@@ -2,30 +2,52 @@
 # should print it out
 # keep going until it says exit
 
+#Change it so that user inputs num1 <operator> num2 instead of 3 separate ones
+
 while True:
-    user_op = input("Put in your operation (+,-,*,/,% or exit): ")
-    if user_op == "exit":
+
+    calc_single_line = input("Enter the calculation (one-line or exit): ")
+
+    if calc_single_line.lower() == "exit":
         print("Bye!")
         break
 
-    user_num1 = int(input("Put in your first number: "))
+    parts = calc_single_line.split() #splits in array of separate items
 
-    user_num2 = int(input("Put in your second number: "))
+    # Validate input
+    if len(parts) != 3:
+        print("Invalid format. Please type: number operator number")
+        continue
+
+    # Convert numbers
+    try:
+        num1 = float(parts[0]) #from parts, index 0 gets num1
+        op = parts[1]
+        num2 = float(parts[2])
+    except ValueError:
+        print("Invalid numbers. Please try again.")
+        continue
 
 #use switch statement in python instead of if statements when using one variable in this case: user_op
-    match user_op:
+    match op:
         case "+":
-            result = user_num1 + user_num2
+            result = num1 + num2
         case "-":
-            result = user_num1 - user_num2
+            result = num1 - num2
         case "*":
-            result = user_num1 * user_num2
+            result = num1 * num2
         case "/":
-            result = user_num1 / user_num2
+            if num2 == 0:
+                print("Error: cannot divide by zero")
+                continue
+            result = num1 / num2
         case "//":
-            result = user_num1 + user_num2
+            if num2 == 0:
+                print("Error: cannot divide by zero")
+                continue #cannot return, we not inside a function
+            result = num1 // num2
         case "%":
-            result = user_num1 + user_num2
+            result = num1 % num2
         case unknown_command:
             print(f"Invalid operation: {unknown_command}")
             continue
